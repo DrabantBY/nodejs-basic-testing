@@ -10,8 +10,8 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "test": "jest --silent",
-    "test:verbose": "jest",
+    "test": "jest",
+    "test:verbose": "jest --verbose",
     "build": "tsc"
   },
   "devDependencies": {
