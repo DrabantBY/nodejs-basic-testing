@@ -1,4 +1,4 @@
-import { generateLinkedList } from './index';
+// import { generateLinkedList } from './index';
 
 describe('generateLinkedList', () => {
   // Check match by expect(...).toStrictEqual(...)

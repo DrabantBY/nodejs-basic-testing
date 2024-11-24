@@ -1,4 +1,4 @@
-import { getBankAccount } from '.';
+// import { getBankAccount } from '.';
 
 describe('BankAccount', () => {
   test('should create account with initial balance', () => {
