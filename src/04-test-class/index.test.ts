@@ -16,6 +16,8 @@ jest.mock('lodash', () => ({
   random: jest.fn(),
 }));
 
+const mockRandom = jest.mocked(random);
+
 describe('BankAccount', () => {
   test('should create account with initial balance', () => {
     expect(account).toBeInstanceOf(BankAccount);
@@ -57,17 +59,13 @@ describe('BankAccount', () => {
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
-    (random as jest.Mock)
-      .mockReturnValueOnce(balance + amount)
-      .mockReturnValueOnce(1);
+    mockRandom.mockReturnValueOnce(balance + amount).mockReturnValueOnce(1);
 
     await expect(account.fetchBalance()).resolves.toBe(balance + amount);
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
-    (random as jest.Mock)
-      .mockReturnValueOnce(balance + amount)
-      .mockReturnValueOnce(1);
+    mockRandom.mockReturnValueOnce(balance + amount).mockReturnValueOnce(1);
 
     await account.synchronizeBalance();
 
@@ -75,7 +73,7 @@ describe('BankAccount', () => {
   });
 
   test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
-    (random as jest.Mock).mockReturnValueOnce(balance).mockReturnValueOnce(0);
+    mockRandom.mockReturnValueOnce(balance).mockReturnValueOnce(0);
 
     await expect(account.synchronizeBalance()).rejects.toThrowError(
       SynchronizationFailedError,
