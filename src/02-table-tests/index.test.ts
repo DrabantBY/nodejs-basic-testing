@@ -19,9 +19,9 @@ const testCases = [
 ];
 
 describe.each(testCases)(
-  'simpleCalculator table tests',
+  'simpleCalculator table test for $a $action $b',
   ({ expected, ...args }) => {
-    it(`${args.a} ${args.action} ${args.b} should be ${expected}`, () => {
+    test(`should return ${expected}`, () => {
       expect(simpleCalculator(args)).toBe(expected);
     });
   },

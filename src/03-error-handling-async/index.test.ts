@@ -14,11 +14,11 @@ describe('resolveValue', () => {
 
 describe('throwError', () => {
   test('should throw error with provided message', () => {
-    expect(() => throwError('message')).toThrowError(new Error('message'));
+    expect(() => throwError('message')).toThrowError('message');
   });
 
   test('should throw error with default message if message is not provided', () => {
-    expect(() => throwError()).toThrowError(new Error('Oops!'));
+    expect(() => throwError()).toThrowError('Oops!');
   });
 });
 

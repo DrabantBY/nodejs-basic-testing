@@ -39,13 +39,13 @@ describe('simpleCalculator tests', () => {
 
   test('should return null for invalid action', () => {
     const action = '%';
-    expect(simpleCalculator({ a, b, action })).toBeNull;
+    expect(simpleCalculator({ a, b, action })).toBeNull();
   });
 
   test('should return null for invalid arguments', () => {
     const a = '0';
     const b = 100;
     const action = Action.Add;
-    expect(simpleCalculator({ a, b, action })).toBeNull;
+    expect(simpleCalculator({ a, b, action })).toBeNull();
   });
 });
