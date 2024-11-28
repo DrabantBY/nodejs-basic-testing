@@ -1,23 +1,10 @@
 import { readFileAsynchronously, doStuffByTimeout, doStuffByInterval } from '.';
-import path from 'path';
 import { existsSync } from 'fs';
 import { readFile } from 'fs/promises';
+import path from 'path';
 
 const callback = jest.fn();
 const timeout = 1000;
-const fileName = 'file.txt';
-const fileText = 'any text';
-
-jest.mock('fs', () => ({
-  existsSync: jest.fn(),
-}));
-
-jest.mock('fs/promises', () => ({
-  readFile: jest.fn(),
-}));
-
-const mockExistsSync = jest.mocked(existsSync);
-const mockReadFile = jest.mocked(readFile);
 
 describe('doStuffByTimeout', () => {
   let spyOnTimeout: jest.SpyInstance;
@@ -94,6 +81,20 @@ describe('doStuffByInterval', () => {
 });
 
 describe('readFileAsynchronously', () => {
+  const fileName = 'file.txt';
+  const fileText = 'any text';
+
+  jest.mock('fs', () => ({
+    existsSync: jest.fn(),
+  }));
+
+  jest.mock('fs/promises', () => ({
+    readFile: jest.fn(),
+  }));
+
+  const mockExistsSync = jest.mocked(existsSync);
+  const mockReadFile = jest.mocked(readFile);
+
   test('should call join with pathToFile', async () => {
     const spyOnJoin = jest.spyOn(path, 'join');
 
